@@ -12,7 +12,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" exact element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
-                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/profile/:userid" element={<Profile />} />
                 </Routes>
             </BrowserRouter>
         </>

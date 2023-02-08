@@ -14,7 +14,7 @@ const Login = () => {
         try {
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .then((user) => {
-                    navigate('/profile', { state: { user: user.uid } })
+                    navigate(`/profile/${user.uid}`)
                 })
                 .catch(() => {
                     setError('帳號密碼錯誤');
