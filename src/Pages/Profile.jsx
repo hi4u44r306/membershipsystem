@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate } from 'react-router';
 import firebase from './firebase';
 // import Barcode from 'react-barcode';
 import QRCode from "react-qr-code";
