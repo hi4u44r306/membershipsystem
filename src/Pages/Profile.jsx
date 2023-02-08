@@ -35,7 +35,7 @@ function Profile() {
                     <QRCode
                         size={256}
                         style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                        value={`/profile/${useruid}`}
+                        value={`https://taoyuancramschool.netlify.app/profile/${useruid}`}
                         viewBox={`0 0 256 256`}
                     />
                 </div>
