@@ -19,18 +19,18 @@ const QRScanner = () => {
     return (
         <div className="qr-reader">
             <h1>會員掃描</h1>
-            <canvas>
-                <QrReader
-                    delay={300}
-                    facingMode={"rear"}
-                    style={{
-                        height: 256,
-                        width: 256,
-                    }}
-                    onError={handleError}
-                    onScan={handleScan}
-                />
-            </canvas>
+            {/* <canvas> */}
+            <QrReader
+                delay={300}
+                facingMode="rear"
+                style={{
+                    height: 256,
+                    width: 256,
+                }}
+                onError={handleError}
+                onScan={handleScan}
+            />
+            {/* </canvas> */}
 
             {/* {result && (
                 <p className="result">Scanned Result: {result}</p>
