@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from "../Pages/Login";
 import Profile from "../Pages/Profile";
+import QRScanner from "../Pages/QRScanner";
 import Signup from "../Pages/Signup";
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
                     <Route path="/" exact element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/profile/:userid" element={<Profile />} />
+                    <Route path="/scanner" element={<QRScanner />} />
                 </Routes>
             </BrowserRouter>
         </>
