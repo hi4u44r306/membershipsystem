@@ -20,6 +20,7 @@ const QRScanner = () => {
         <div className="qr-reader">
             <QrReader
                 delay={300}
+                facingMode="rear"
                 style={{
                     height: 256,
                     width: 256,
