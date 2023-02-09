@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import firebase from './firebase';
-// import Barcode from 'react-barcode';
 import QRCode from "react-qr-code";
+import './scss/Profile.scss'
 
 
 function Profile() {
+    let { id } = useParams();
     const [userinfo, setUserInfo] = useState({});
     const [useruid, setUserUID] = useState();
     const navigate = useNavigate();
@@ -31,27 +32,41 @@ function Profile() {
         firebase.auth().signOut();
     }
 
+    function DeleteUser() {
+        const user = firebase.auth().currentUser;
+        firebase.database().ref('users/' + useruid).remove().then(() => {
+            user.delete().then(() => {
+                alert("User deleted")
+            }).catch((error) => {
+                // An error ocurred
+                // ...
+            });
+        })
+    }
+
     return (
         <div>
             <form className="login-form">
-                <h1>桃園安親班會員資料</h1>
+                <h3>桃園安親班會員資料</h3>
                 <div style={{ height: "auto", margin: "0 auto", maxWidth: 128, width: "100%" }}>
                     <QRCode
                         size={256}
                         style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                        value={`${useruid}`}
+                        value={`${useruid},`}
                         viewBox={`0 0 256 256`}
                     />
                 </div>
-                <div>
-                    <p>
+                <div className='userinfo'>
+                    <span>
                         Email : {userinfo.email}
-                    </p>
-                    <p>
-                        姓名 : {userinfo.name || 'nousername'}
-                    </p>
+                    </span>
+                    <span>
+                        姓名 : {userinfo.username || '無'}
+                    </span>
                 </div>
-                <button onClick={Logout}>登出</button>
+                <button className='logoutbtn' onClick={Logout}>登出</button>
+                <button className='deletebtn' onClick={DeleteUser}>刪除帳號</button>
+                {id}
             </form>
 
         </div>

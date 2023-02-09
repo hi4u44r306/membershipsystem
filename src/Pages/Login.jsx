@@ -14,7 +14,7 @@ const Login = () => {
         try {
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .then((user) => {
-                    navigate(`/profile/${user.uid}`)
+                    navigate('/profile')
                 })
                 .catch(() => {
                     setError('帳號密碼錯誤');
@@ -29,7 +29,7 @@ const Login = () => {
     return (
         <>
             <form className="login-form" onSubmit={handleSubmit}>
-                <h1>桃園安親班會員登入</h1>
+                <h3>桃園安親班會員登入</h3>
                 {error && <p className="error">{error}</p>}
                 <input
                     type="text"

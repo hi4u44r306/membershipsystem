@@ -6,11 +6,13 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.2.3",
     "firebase": "^8.10.1",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-barcode": "^1.4.6",
     "react-barcode-reader": "^0.0.2",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-qr-code": "^2.0.11",
     "react-redux": "^8.0.5",
@@ -18,7 +20,6 @@
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
     "react-weblineindia-qrcode-scanner": "^1.0.0",
-    "use-scan-detection": "^0.2.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

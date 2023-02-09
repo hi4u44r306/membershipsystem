@@ -13,34 +13,42 @@ const Signup = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        try {
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    console.log(userCredential)
-                    firebase.database().ref('users/' + userCredential.user.uid).set({
-                        username: username,
-                        email: email,
-                        password: password,
-                    }).then(() => {
-                        navigate("/profile")
+        if (username && email && password.trim().length !== 0) {
+            try {
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        console.log(userCredential)
+                        firebase.database().ref('users/' + userCredential.user.uid).set({
+                            username: username,
+                            email: email,
+                            password: password,
+                            繳費紀錄: {
+                                繳費: '1月已繳費',
+                            }
+                        }).then(() => {
+                            navigate('/profile')
+                        })
                     })
-                })
-                .catch(() => {
-                    setError('帳號已存在');
-                });
+                    .catch(() => {
+                        setError('帳號已存在');
+                    });
 
 
-        } catch (err) {
-            setError('Incorrect username or password');
+            } catch (err) {
+                setError('Incorrect username or password');
+            }
+        } else {
+            setError('每一個欄位都必須填寫');
         }
     };
 
     return (
         <>
             <form className="login-form" onSubmit={handleSubmit}>
-                <h1>桃園安親班會員註冊</h1>
+                <h3>桃園安親班會員註冊</h3>
                 {error && <p className="error">{error}</p>}
                 <input
+                    id="username"
                     type="text"
                     placeholder="姓名"
                     value={username}
@@ -48,6 +56,7 @@ const Signup = () => {
                     className="username-input"
                 />
                 <input
+                    id="email"
                     type="text"
                     placeholder="Email"
                     value={email}
@@ -55,6 +64,7 @@ const Signup = () => {
                     className="username-input"
                 />
                 <input
+                    id="password"
                     type="password"
                     placeholder="Password"
                     value={password}

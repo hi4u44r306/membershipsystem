@@ -18,11 +18,11 @@ const QRScanner = () => {
 
     return (
         <div className="qr-reader">
-            <h1>會員掃描</h1>
+            <h3>會員掃描</h3>
             {/* <canvas> */}
             <QrReader
                 delay={300}
-                facingMode={"rear"}
+                facingMode={"environment"}
                 style={{
                     height: 256,
                     width: 256,
