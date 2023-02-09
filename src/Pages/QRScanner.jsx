@@ -18,20 +18,24 @@ const QRScanner = () => {
 
     return (
         <div className="qr-reader">
-            <QrReader
-                delay={300}
-                facingMode="rear"
-                style={{
-                    height: 256,
-                    width: 256,
-                }}
-                onError={handleError}
-                onScan={handleScan}
-            />
+            <h1>會員掃描</h1>
+            <canvas>
+                <QrReader
+                    delay={300}
+                    facingMode="rear"
+                    style={{
+                        height: 256,
+                        width: 256,
+                    }}
+                    onError={handleError}
+                    onScan={handleScan}
+                />
+            </canvas>
 
-            {result && (
+            {/* {result && (
                 <p className="result">Scanned Result: {result}</p>
-            )}
+            )} */}
+            <p className="result">會員編號: {result || '無資料'}</p>
         </div>
     );
 };

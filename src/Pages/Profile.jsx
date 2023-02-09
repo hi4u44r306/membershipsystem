@@ -27,6 +27,10 @@ function Profile() {
         }
     });
 
+    function Logout() {
+        firebase.auth().signOut();
+    }
+
     return (
         <div>
             <form className="login-form">
@@ -39,13 +43,15 @@ function Profile() {
                         viewBox={`0 0 256 256`}
                     />
                 </div>
-
-                <h3>
-                    {userinfo.email}
-                </h3>
-                <h3>
-                    {userinfo.name || 'nousername'}
-                </h3>
+                <div>
+                    <p>
+                        Email : {userinfo.email}
+                    </p>
+                    <p>
+                        姓名 : {userinfo.name || 'nousername'}
+                    </p>
+                </div>
+                <button onClick={Logout}>登出</button>
             </form>
 
         </div>
