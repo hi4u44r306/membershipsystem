@@ -22,7 +22,7 @@ const QRScanner = () => {
             {/* <canvas> */}
             <QrReader
                 delay={300}
-                facingMode="rear"
+                facingMode={"rear"}
                 style={{
                     height: 256,
                     width: 256,
