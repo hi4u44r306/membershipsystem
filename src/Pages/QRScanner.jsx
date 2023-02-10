@@ -35,7 +35,7 @@ const QRScanner = () => {
             {/* {result && (
                 <p className="result">Scanned Result: {result}</p>
             )} */}
-            <p className="result">會員編號: {result || '無資料'}</p>
+            <p className="result">會員編號: {result.split(',')[0] || '無資料'}</p>
             <p className="result">會員姓名: {result.split(',')[1] || '無資料'}</p>
         </div>
     );
