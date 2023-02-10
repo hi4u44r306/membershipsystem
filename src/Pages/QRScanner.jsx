@@ -5,6 +5,7 @@ import './scss/QRScanner.scss';
 
 const QRScanner = () => {
     const [result, setResult] = useState('');
+    const [camera, setCamera] = useState('front');
 
     const handleScan = (data) => {
         if (data) {
@@ -16,13 +17,18 @@ const QRScanner = () => {
         console.error(err);
     };
 
+    const handleSwitchCamera = () => {
+        setCamera('rear')
+    }
+
     return (
         <div className="qr-reader">
             <h3>會員掃描</h3>
             {/* <canvas> */}
+            <button onClick={handleSwitchCamera}>Switch Camera</button>
             <QrReader
                 delay={300}
-                facingMode="rear"
+                facingMode={camera}
                 style={{
                     height: 256,
                     width: 256,
