@@ -4,7 +4,7 @@ import QrReader from 'react-weblineindia-qrcode-scanner'
 import './scss/QRScanner.scss';
 
 const QRScanner = () => {
-    const [result, setResult] = useState(null);
+    const [result, setResult] = useState('');
 
     const handleScan = (data) => {
         if (data) {
@@ -22,7 +22,7 @@ const QRScanner = () => {
             {/* <canvas> */}
             <QrReader
                 delay={300}
-                facingMode={"environment"}
+                facingMode={"front"}
                 style={{
                     height: 256,
                     width: 256,
@@ -36,6 +36,7 @@ const QRScanner = () => {
                 <p className="result">Scanned Result: {result}</p>
             )} */}
             <p className="result">會員編號: {result || '無資料'}</p>
+            <p className="result">會員姓名: {result.split(',')[1] || '無資料'}</p>
         </div>
     );
 };

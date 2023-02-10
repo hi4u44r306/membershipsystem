@@ -52,7 +52,7 @@ function Profile() {
                     <QRCode
                         size={256}
                         style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                        value={`${useruid},`}
+                        value={`${useruid},${userinfo.username}`}
                         viewBox={`0 0 256 256`}
                     />
                 </div>
