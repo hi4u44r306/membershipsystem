@@ -5,7 +5,7 @@ import './scss/QRScanner.scss';
 
 const QRScanner = () => {
     const [result, setResult] = useState('');
-    const [camera, setCamera] = useState('front');
+    const [camera, setCamera] = useState('rear');
 
     const handleScan = (data) => {
         if (data) {
@@ -18,7 +18,7 @@ const QRScanner = () => {
     };
 
     const handleSwitchCamera = () => {
-        setCamera('rear')
+        setCamera('front')
     }
 
     return (
