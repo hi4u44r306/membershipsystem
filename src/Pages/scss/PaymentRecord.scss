@@ -1,0 +1,35 @@
+.boxtitle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.recordbox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 100px auto;
+  width: 400px;
+  padding: 40px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
+// .titlepart {
+//   display: flex;
+//   justify-content: center;
+// }
+.title {
+  width: 18vw;
+  padding: 15px;
+  justify-content: space-evenly;
+  font-size: 20px;
+  font-weight: 900;
+  color: #005b7f;
+  text-align: center;
+  align-items: center;
+}
+.record {
+  display: flex;
+}

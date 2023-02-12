@@ -9,6 +9,8 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const currentMonth = new Date().toJSON().slice(0, 7);
+    const currentDate = new Date().toJSON().slice(0, 10);
 
 
     const handleSubmit = async (event) => {
@@ -17,23 +19,24 @@ const Signup = () => {
             try {
                 firebase.auth().createUserWithEmailAndPassword(email, password)
                     .then((userCredential) => {
-                        console.log(userCredential)
-                        firebase.database().ref('users/' + userCredential.user.uid).set({
+                        const useruid = userCredential.user.uid;
+                        const db = firebase.firestore();
+                        db.collection('users').doc(useruid).set({
                             username: username,
                             email: email,
                             password: password,
-                            繳費紀錄: {
-                                繳費: '1月已繳費',
-                            }
+                            accountcreateddate: currentDate,
                         }).then(() => {
+                            db.collection('users').doc(useruid).collection('Paymentrecord').doc(currentMonth).set({
+                                月份: currentMonth,
+                                繳費紀錄: currentMonth + "未繳費"
+                            })
                             navigate('/profile')
                         })
                     })
                     .catch(() => {
                         setError('帳號已存在');
                     });
-
-
             } catch (err) {
                 setError('Incorrect username or password');
             }
@@ -50,7 +53,7 @@ const Signup = () => {
                 <input
                     id="username"
                     type="text"
-                    placeholder="姓名"
+                    placeholder="name"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     className="username-input"

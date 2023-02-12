@@ -2,10 +2,12 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/storage';
 import "firebase/database";
+import 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: "AIzaSyB_u_YPhx8Oos0BQcpShjIFPGIeAj2jInU",
     authDomain: "taoyuancramschool.firebaseapp.com",
+    databaseURL: "https://taoyuancramschool-default-rtdb.firebaseio.com",
     projectId: "taoyuancramschool",
     storageBucket: "taoyuancramschool.appspot.com",
     messagingSenderId: "1091874301",
