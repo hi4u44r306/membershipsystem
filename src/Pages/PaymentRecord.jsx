@@ -42,6 +42,7 @@ class PaymentRecord extends React.Component {
                             <tr className='titlepart'>
                                 <th className='title'>月份</th>
                                 <th className='title'>繳費狀態</th>
+                                <th className='title'></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,7 +60,19 @@ class PaymentRecord extends React.Component {
                                             <td key={record.繳費紀錄}>
                                                 <div className='d-flex justify-content-center'>
                                                     <div className="align-self-center pl-3">
-                                                        <b><span className={record.繳費紀錄 ? 'text-danger' || '' : 'text-success'}>{record.繳費紀錄 || '已繳費'}</span></b>
+                                                        <b><span className={record.繳費紀錄 ? 'text-success' || '' : 'text-danger'}>{record.繳費紀錄 || '未繳費'}</span></b>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td key={index}>
+                                                <div className='d-flex justify-content-center'>
+                                                    <div className="align-self-center pl-3">
+                                                        {
+                                                            record.繳費紀錄 ?
+                                                                <button className='alreadypaybtn' disabled>已繳費</button>
+                                                                :
+                                                                <button className='paybtn'>去繳費</button>
+                                                        }
                                                     </div>
                                                 </div>
                                             </td>
