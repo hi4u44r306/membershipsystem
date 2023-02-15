@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
-        <Nav fill variant="tabs" defaultActiveKey="/home">
+        <Nav fill >
             <Nav.Item>
                 <Nav.Link as={Link} to="/profile">會員資訊</Nav.Link>
             </Nav.Item>

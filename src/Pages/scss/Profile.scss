@@ -1,8 +1,24 @@
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px auto;
+  width: 400px;
+  padding: 40px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
 .userinfo {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 10px;
+}
+.loader {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 30px;
 }
 .logoutbtn {
   padding: 10px 20px;
@@ -23,4 +39,17 @@
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px auto;
+    width: 90vw;
+    padding: 40px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+  }
 }

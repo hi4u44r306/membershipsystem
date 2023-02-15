@@ -1,36 +1,44 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router';
 import firebase from './firebase';
 import QRCode from "react-qr-code";
 import './scss/Profile.scss'
 import Navbar from '../Components/Navbar';
+import { BarLoader } from 'react-spinners';
 
 
 function Profile() {
-    const [useruid, setUserUID] = useState();
-    const [username, setUserName] = useState();
-    const [useremail, setUserEmail] = useState();
+    const [isLoading, setLoading] = useState(true);
+    const username = localStorage.getItem('name');
+    const useremail = localStorage.getItem('email');
+    const useruid = localStorage.getItem('userid');
     const navigate = useNavigate();
     const db = firebase.firestore();
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000)
+    }, [])
+
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-            setUserUID(user.uid)
             db.collection('users').doc(user.uid).get().then((doc) => {
-                setUserEmail(doc.data().email)
-                setUserName(doc.data().username)
+                localStorage.setItem('email', doc.data().email)
+                localStorage.setItem('name', doc.data().username)
+                localStorage.setItem('userid', user.uid)
             })
-        } else {
-            setTimeout(function () { window.location.href = "/" }, 1000)
         }
     });
 
     function Logout() {
+        localStorage.clear();
         firebase.auth().signOut();
+        navigate('/');
     }
 
     function DeleteUser() {
-        const user = firebase.auth().currentUser;
+        let user = firebase.auth().currentUser;
         user.delete().then(() => {
             db.collection('users').doc(useruid).delete().then(() => {
                 navigate('/');
@@ -41,7 +49,7 @@ function Profile() {
     return (
         <div>
             <Navbar />
-            <form className="login-form">
+            <div className="profile-form">
                 <h3>桃園安親班會員資料</h3>
                 <div style={{ height: "auto", margin: "0 auto", maxWidth: 128, width: "100%" }}>
                     <QRCode
@@ -51,17 +59,25 @@ function Profile() {
                         viewBox={`0 0 256 256`}
                     />
                 </div>
-                <div className='userinfo'>
-                    <span>
-                        Email : {useremail || '讀取中...'}
-                    </span>
-                    <span>
-                        姓名 : {username || '讀取中...'}
-                    </span>
-                </div>
+                {
+                    isLoading
+                        ?
+                        <div className='loader'>
+                            <BarLoader color="#36d7b7" />
+                        </div>
+                        :
+                        <div className='userinfo'>
+                            <span>
+                                Email : {useremail}
+                            </span>
+                            <span>
+                                姓名 : {username}
+                            </span>
+                        </div>
+                }
                 <button className='logoutbtn' onClick={Logout}>登出</button>
                 <button className='deletebtn' onClick={DeleteUser}>刪除帳號</button>
-            </form>
+            </div>
 
         </div>
     )

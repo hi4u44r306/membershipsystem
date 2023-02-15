@@ -11,17 +11,13 @@
   align-items: flex-start;
   margin: 100px auto;
   width: 60vw;
-  padding: 40px;
+  padding: 25px;
   background-color: #f2f2f2;
   border-radius: 10px;
 }
 
-// .titlepart {
-//   display: flex;
-//   justify-content: center;
-// }
 .title {
-  width: 18vw;
+  width: 40vw;
   padding: 15px;
   justify-content: space-evenly;
   font-size: 20px;
@@ -30,6 +26,7 @@
   text-align: center;
   align-items: center;
 }
+
 .record {
   display: flex;
 }
@@ -47,4 +44,16 @@
   border-radius: 10px;
   padding: 5px 10px;
   margin: 5px;
+}
+
+@media (max-width: 768px) {
+  .recordbox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 100px auto;
+    width: 90vw;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+  }
 }

@@ -13,7 +13,7 @@ const Login = () => {
         event.preventDefault();
         try {
             firebase.auth().signInWithEmailAndPassword(email, password)
-                .then((user) => {
+                .then(() => {
                     navigate('/profile')
                 })
                 .catch(() => {
